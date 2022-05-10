@@ -40,6 +40,7 @@
             // 
             // btn_hello
             // 
+            this.btn_hello.AutoSize = true;
             this.btn_hello.Location = new System.Drawing.Point(292, 389);
             this.btn_hello.Name = "btn_hello";
             this.btn_hello.Size = new System.Drawing.Size(189, 40);
@@ -68,6 +69,10 @@
             // surgeryDrop
             // 
             this.surgeryDrop.FormattingEnabled = true;
+            this.surgeryDrop.Items.AddRange(new object[] {
+            "Nottinghamshire Surgery",
+            "Derbyshire Surgery",
+            "Sheffield Surgery"});
             this.surgeryDrop.Location = new System.Drawing.Point(442, 119);
             this.surgeryDrop.Name = "surgeryDrop";
             this.surgeryDrop.Size = new System.Drawing.Size(148, 21);
@@ -76,6 +81,10 @@
             // doctorDrop
             // 
             this.doctorDrop.FormattingEnabled = true;
+            this.doctorDrop.Items.AddRange(new object[] {
+            "Doctor Voce",
+            "Doctor Bean",
+            "Doctor Scar"});
             this.doctorDrop.Location = new System.Drawing.Point(442, 177);
             this.doctorDrop.Name = "doctorDrop";
             this.doctorDrop.Size = new System.Drawing.Size(148, 21);
@@ -129,6 +138,8 @@
             this.Controls.Add(this.btn_hello);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
