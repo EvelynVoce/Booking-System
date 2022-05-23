@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WinForms
 {
@@ -31,9 +32,30 @@ namespace WinForms
         {
             string chosenSurgery = surgeryDrop.Text;
             string chosenDoctor = doctorDrop.Text;
+            DateTime chosenDate = dateTimePicker1.Value;
+                
 
             Console.WriteLine(chosenSurgery);
-            Console.WriteLine(chosenDoctor + "\n");
+            Console.WriteLine(chosenDoctor);
+            Console.WriteLine(chosenDate + "\n");
+            /*
+            DataAccess db = new DataAccess();
+            string surgery = "Derbyshire Surgery";
+            List<int> results = db.GetDoctors(surgery);
+            foreach (var v in results)
+            {
+                Console.WriteLine("Element = {0}", v);
+            }*/
+
+
+            DataAccess db = new DataAccess();
+            int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
+
+            List<DateTime> results = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
+            foreach (var v in results)
+            {
+                Console.WriteLine("Element = {0}", v);
+            }
 
         }
 
@@ -54,28 +76,33 @@ namespace WinForms
 
         private void Form1_Resize(object sender, EventArgs e)
         {
-            resizeControl(bttnOriginalRectangle, btn_hello);
             resizeControl(titleOriginalRectangle, lbl_title);
-            resizeControl(dateOriginalRectangle, dateTimePicker1);
+
             resizeControl(surgeryOriginalRectangle, surgeryDrop);
             resizeControl(doctorOriginalRectangle, doctorDrop);
+            resizeControl(dateOriginalRectangle, dateTimePicker1);
+
             resizeControl(lblSurgerySize, lblSurgery);
             resizeControl(lblDoctorSize, lblDoctor);
             resizeControl(lblDateSize, lblDate);
+
+            resizeControl(bttnOriginalRectangle, btn_hello);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             originalFormSize = new Rectangle(this.Location.X, this.Location.Y, this.Width, this.Height);
-            bttnOriginalRectangle = new Rectangle(btn_hello.Location.X, btn_hello.Location.Y, btn_hello.Width, btn_hello.Height);
             titleOriginalRectangle = new Rectangle(lbl_title.Location.X, lbl_title.Location.Y, lbl_title.Width, lbl_title.Height);
-            dateOriginalRectangle = new Rectangle(dateTimePicker1.Location.X, dateTimePicker1.Location.Y, dateTimePicker1.Width, dateTimePicker1.Height);
+
             surgeryOriginalRectangle = new Rectangle(surgeryDrop.Location.X, surgeryDrop.Location.Y, surgeryDrop.Width, surgeryDrop.Height);
             doctorOriginalRectangle = new Rectangle(doctorDrop.Location.X, doctorDrop.Location.Y, doctorDrop.Width, doctorDrop.Height);
+            dateOriginalRectangle = new Rectangle(dateTimePicker1.Location.X, dateTimePicker1.Location.Y, dateTimePicker1.Width, dateTimePicker1.Height);
 
             lblSurgerySize = new Rectangle(lblSurgery.Location.X, lblSurgery.Location.Y, lblSurgery.Width, lblSurgery.Height);
             lblDoctorSize = new Rectangle(lblDoctor.Location.X, lblDoctor.Location.Y, lblDoctor.Width, lblDoctor.Height);
             lblDateSize = new Rectangle(lblDate.Location.X, lblDate.Location.Y, lblDate.Width, lblDate.Height);
+
+            bttnOriginalRectangle = new Rectangle(btn_hello.Location.X, btn_hello.Location.Y, btn_hello.Width, btn_hello.Height);
         }
     }
 }
