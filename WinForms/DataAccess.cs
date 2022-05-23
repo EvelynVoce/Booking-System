@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using System.Data;
-using System.Globalization;
 
 namespace WinForms
 {
@@ -22,8 +21,7 @@ namespace WinForms
 
         public List<DateTime> availability(string surgeries, int doctor, DateTime date)
         {
-            var cultureInfo = new CultureInfo("en-GB");
-            var endDate = date.AddDays(1);
+            DateTime endDate = date.AddDays(1);
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("FirstDatabase")))
             {
                 var x = date.ToString("o");

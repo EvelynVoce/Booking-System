@@ -36,6 +36,7 @@
             this.lblSurgery = new System.Windows.Forms.Label();
             this.lblDoctor = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
+            this.timeBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btn_hello
@@ -61,7 +62,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(442, 234);
+            this.dateTimePicker1.Location = new System.Drawing.Point(233, 240);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(148, 20);
             this.dateTimePicker1.TabIndex = 2;
@@ -73,7 +74,7 @@
             "Nottinghamshire Surgery",
             "Derbyshire Surgery",
             "Sheffield Surgery"});
-            this.surgeryDrop.Location = new System.Drawing.Point(442, 119);
+            this.surgeryDrop.Location = new System.Drawing.Point(233, 125);
             this.surgeryDrop.Name = "surgeryDrop";
             this.surgeryDrop.Size = new System.Drawing.Size(148, 21);
             this.surgeryDrop.TabIndex = 3;
@@ -85,7 +86,7 @@
             "Doctor Voce",
             "Doctor Bean",
             "Doctor Scar"});
-            this.doctorDrop.Location = new System.Drawing.Point(442, 177);
+            this.doctorDrop.Location = new System.Drawing.Point(233, 183);
             this.doctorDrop.Name = "doctorDrop";
             this.doctorDrop.Size = new System.Drawing.Size(148, 21);
             this.doctorDrop.TabIndex = 4;
@@ -94,7 +95,7 @@
             // 
             this.lblSurgery.AutoSize = true;
             this.lblSurgery.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblSurgery.Location = new System.Drawing.Point(292, 119);
+            this.lblSurgery.Location = new System.Drawing.Point(83, 125);
             this.lblSurgery.Name = "lblSurgery";
             this.lblSurgery.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblSurgery.Size = new System.Drawing.Size(94, 26);
@@ -105,7 +106,7 @@
             // 
             this.lblDoctor.AutoSize = true;
             this.lblDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblDoctor.Location = new System.Drawing.Point(292, 172);
+            this.lblDoctor.Location = new System.Drawing.Point(83, 178);
             this.lblDoctor.Name = "lblDoctor";
             this.lblDoctor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDoctor.Size = new System.Drawing.Size(82, 26);
@@ -116,18 +117,27 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.lblDate.Location = new System.Drawing.Point(292, 228);
+            this.lblDate.Location = new System.Drawing.Point(83, 234);
             this.lblDate.Name = "lblDate";
             this.lblDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblDate.Size = new System.Drawing.Size(64, 26);
             this.lblDate.TabIndex = 7;
             this.lblDate.Text = "Date:";
             // 
+            // timeBox
+            // 
+            this.timeBox.FormattingEnabled = true;
+            this.timeBox.Location = new System.Drawing.Point(447, 125);
+            this.timeBox.Name = "timeBox";
+            this.timeBox.Size = new System.Drawing.Size(251, 147);
+            this.timeBox.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.timeBox);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblDoctor);
             this.Controls.Add(this.lblSurgery);
@@ -155,6 +165,7 @@
         private System.Windows.Forms.Label lblSurgery;
         private System.Windows.Forms.Label lblDoctor;
         private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.ListBox timeBox;
     }
 }
 

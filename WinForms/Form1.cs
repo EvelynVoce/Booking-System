@@ -30,22 +30,16 @@ namespace WinForms
 
         private void btn_hello_Click(object sender, EventArgs e)
         {
+            timeBox.Items.Clear();
             string chosenSurgery = surgeryDrop.Text;
             string chosenDoctor = doctorDrop.Text;
-            DateTime chosenDate = dateTimePicker1.Value;
-                
+            DateTime dateWithIncorrectTime = dateTimePicker1.Value;
+            DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(0, 0, 0));
+
 
             Console.WriteLine(chosenSurgery);
             Console.WriteLine(chosenDoctor);
             Console.WriteLine(chosenDate + "\n");
-            /*
-            DataAccess db = new DataAccess();
-            string surgery = "Derbyshire Surgery";
-            List<int> results = db.GetDoctors(surgery);
-            foreach (var v in results)
-            {
-                Console.WriteLine("Element = {0}", v);
-            }*/
 
 
             DataAccess db = new DataAccess();
@@ -53,9 +47,7 @@ namespace WinForms
 
             List<DateTime> results = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
             foreach (var v in results)
-            {
-                Console.WriteLine("Element = {0}", v);
-            }
+                timeBox.Items.Add(v);
 
         }
 
