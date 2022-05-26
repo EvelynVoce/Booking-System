@@ -34,7 +34,7 @@ namespace WinForms
             string chosenSurgery = surgeryDrop.Text;
             string chosenDoctor = doctorDrop.Text;
             DateTime dateWithIncorrectTime = dateTimePicker1.Value;
-            DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(0, 0, 0));
+            DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(9, 0, 0));
 
 
             Console.WriteLine(chosenSurgery);
@@ -45,8 +45,15 @@ namespace WinForms
             DataAccess db = new DataAccess();
             int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
 
-            List<DateTime> results = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
-            foreach (var v in results)
+
+            List<DateTime> allDateTimes = new List<DateTime> {chosenDate};
+            for (int i = 1; i < 9; i++)
+                allDateTimes.Add(allDateTimes[0].AddHours(i));
+
+            List<DateTime> bookedDateTimes = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
+            List<DateTime> availableDateTimes = allDateTimes.Except(bookedDateTimes).ToList();
+
+            foreach (var v in availableDateTimes)
                 timeBox.Items.Add(v);
 
         }
