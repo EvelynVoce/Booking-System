@@ -103,5 +103,12 @@ namespace WinForms
 
             bttnOriginalRectangle = new Rectangle(btn_hello.Location.X, btn_hello.Location.Y, btn_hello.Width, btn_hello.Height);
         }
+
+        private void timeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected_item = timeBox.SelectedItem.ToString();
+            Console.WriteLine(selected_item);
+            
+        }
     }
 }

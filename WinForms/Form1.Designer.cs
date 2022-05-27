@@ -53,10 +53,10 @@
             // lbl_title
             // 
             this.lbl_title.AutoSize = true;
-            this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_title.Location = new System.Drawing.Point(273, 23);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(236, 26);
+            this.lbl_title.Size = new System.Drawing.Size(233, 25);
             this.lbl_title.TabIndex = 1;
             this.lbl_title.Text = "Book your appointment";
             // 
@@ -131,6 +131,7 @@
             this.timeBox.Name = "timeBox";
             this.timeBox.Size = new System.Drawing.Size(251, 147);
             this.timeBox.TabIndex = 8;
+            this.timeBox.SelectedIndexChanged += new System.EventHandler(this.timeBox_SelectedIndexChanged);
             // 
             // Form1
             // 
