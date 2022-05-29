@@ -66,6 +66,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(148, 20);
             this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // surgeryDrop
             // 
@@ -78,6 +79,7 @@
             this.surgeryDrop.Name = "surgeryDrop";
             this.surgeryDrop.Size = new System.Drawing.Size(148, 21);
             this.surgeryDrop.TabIndex = 3;
+            this.surgeryDrop.SelectedIndexChanged += new System.EventHandler(this.surgeryDrop_SelectedIndexChanged);
             // 
             // doctorDrop
             // 
@@ -90,6 +92,7 @@
             this.doctorDrop.Name = "doctorDrop";
             this.doctorDrop.Size = new System.Drawing.Size(148, 21);
             this.doctorDrop.TabIndex = 4;
+            this.doctorDrop.SelectedIndexChanged += new System.EventHandler(this.doctorDrop_SelectedIndexChanged);
             // 
             // lblSurgery
             // 

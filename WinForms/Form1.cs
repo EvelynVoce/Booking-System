@@ -30,32 +30,15 @@ namespace WinForms
 
         private void btn_hello_Click(object sender, EventArgs e)
         {
-            timeBox.Items.Clear();
             string chosenSurgery = surgeryDrop.Text;
             string chosenDoctor = doctorDrop.Text;
             DateTime dateWithIncorrectTime = dateTimePicker1.Value;
             DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(9, 0, 0));
-
-
-            Console.WriteLine(chosenSurgery);
-            Console.WriteLine(chosenDoctor);
-            Console.WriteLine(chosenDate + "\n");
-
+            string selected_item = timeBox.SelectedItem.ToString();
 
             DataAccess db = new DataAccess();
             int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
-
-
-            List<DateTime> allDateTimes = new List<DateTime> {chosenDate};
-            for (int i = 1; i < 9; i++)
-                allDateTimes.Add(allDateTimes[0].AddHours(i));
-
-            List<DateTime> bookedDateTimes = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
-            List<DateTime> availableDateTimes = allDateTimes.Except(bookedDateTimes).ToList();
-
-            foreach (var v in availableDateTimes)
-                timeBox.Items.Add(v);
-
+            db.availability(chosenSurgery, selectedDoctorID, chosenDate);
         }
 
         private void resizeControl(Rectangle r, Control c)
@@ -109,6 +92,53 @@ namespace WinForms
             string selected_item = timeBox.SelectedItem.ToString();
             Console.WriteLine(selected_item);
             
+        }
+
+        private void valuesChanged()
+        {
+            string chosenSurgery = surgeryDrop.Text;
+            string chosenDoctor = doctorDrop.Text;
+
+            if (chosenSurgery != "" && chosenDoctor != "")
+            {
+                timeBox.Items.Clear();
+                DateTime dateWithIncorrectTime = dateTimePicker1.Value;
+                DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(9, 0, 0));
+
+
+                Console.WriteLine(chosenSurgery);
+                Console.WriteLine(chosenDoctor);
+                Console.WriteLine(chosenDate + "\n");
+
+
+                DataAccess db = new DataAccess();
+                int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
+
+
+                List<DateTime> allDateTimes = new List<DateTime> { chosenDate };
+                for (int i = 1; i < 9; i++)
+                    allDateTimes.Add(allDateTimes[0].AddHours(i));
+
+                List<DateTime> bookedDateTimes = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
+                List<DateTime> availableDateTimes = allDateTimes.Except(bookedDateTimes).ToList();
+
+                foreach (var v in availableDateTimes)
+                    timeBox.Items.Add(v);
+            }
+        }
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            valuesChanged();
+        }
+
+        private void doctorDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            valuesChanged();
+        }
+
+        private void surgeryDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            valuesChanged();
         }
     }
 }

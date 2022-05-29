@@ -28,5 +28,18 @@ namespace WinForms
                     $"AND DateAndTime > '{date:o}' AND DateAndTime < '{endDate:o}'").ToList();
             }
         }
+
+        public void createBooking(string surgeries, int doctor, DateTime date)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("FirstDatabase")))
+            {
+                Random rnd = new Random();
+                int randomID = rnd.Next(10000, 99999);
+
+                Appointment AppointmentBooking = new Appointment {AppointmentID = randomID, DoctorID = doctor, Surgery = surgeries, DateAndTime = date};
+                connection.Execute("dbo.Appointments_Insert @AppointmentID, @DoctorID, @Surgery, @DateAndTime", AppointmentBooking);
+
+            }
+        }
     }
 }
