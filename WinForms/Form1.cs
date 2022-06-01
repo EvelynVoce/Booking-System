@@ -32,13 +32,15 @@ namespace WinForms
         {
             string chosenSurgery = surgeryDrop.Text;
             string chosenDoctor = doctorDrop.Text;
-            DateTime dateWithIncorrectTime = dateTimePicker1.Value;
-            DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(9, 0, 0));
-            string selected_item = timeBox.SelectedItem.ToString();
+
+            string SelectedTime = timeBox.SelectedItem.ToString();
+
+            DateTime SelectedDateTime = DateTime.Parse(SelectedTime);
 
             DataAccess db = new DataAccess();
             int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
-            db.availability(chosenSurgery, selectedDoctorID, chosenDate);
+            db.createBooking(chosenSurgery, selectedDoctorID, SelectedDateTime);
+            valuesChanged();
         }
 
         private void resizeControl(Rectangle r, Control c)
