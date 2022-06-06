@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_hello = new System.Windows.Forms.Button();
+            this.btn_book = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.surgeryDrop = new System.Windows.Forms.ComboBox();
@@ -39,16 +39,16 @@
             this.timeBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // btn_hello
+            // btn_book
             // 
-            this.btn_hello.AutoSize = true;
-            this.btn_hello.Location = new System.Drawing.Point(292, 389);
-            this.btn_hello.Name = "btn_hello";
-            this.btn_hello.Size = new System.Drawing.Size(189, 40);
-            this.btn_hello.TabIndex = 0;
-            this.btn_hello.Text = " Book";
-            this.btn_hello.UseVisualStyleBackColor = true;
-            this.btn_hello.Click += new System.EventHandler(this.btn_hello_Click);
+            this.btn_book.AutoSize = true;
+            this.btn_book.Location = new System.Drawing.Point(292, 389);
+            this.btn_book.Name = "btn_book";
+            this.btn_book.Size = new System.Drawing.Size(189, 40);
+            this.btn_book.TabIndex = 0;
+            this.btn_book.Text = " Book";
+            this.btn_book.UseVisualStyleBackColor = true;
+            this.btn_book.Click += new System.EventHandler(this.btn_book_click);
             // 
             // lbl_title
             // 
@@ -149,11 +149,12 @@
             this.Controls.Add(this.surgeryDrop);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.lbl_title);
-            this.Controls.Add(this.btn_hello);
+            this.Controls.Add(this.btn_book);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +162,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_hello;
+        private System.Windows.Forms.Button btn_book;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox surgeryDrop;
