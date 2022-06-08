@@ -52,19 +52,12 @@ namespace WinForms
                 DateTime dateWithIncorrectTime = dateTimePicker1.Value;
                 DateTime chosenDate = dateWithIncorrectTime.Date.Add(new TimeSpan(9, 0, 0));
 
-
-                Console.WriteLine(chosenSurgery);
-                Console.WriteLine(chosenDoctor);
-                Console.WriteLine(chosenDate + "\n");
-
-
                 DataAccess db = new DataAccess();
                 int selectedDoctorID = db.GetDoctorID(chosenDoctor)[0];
 
-
                 List<DateTime> allDateTimes = new List<DateTime> { chosenDate };
-                for (int i = 1; i < 9; i++)
-                    allDateTimes.Add(allDateTimes[0].AddHours(i));
+                for (int i = 1; i < 17; i++)
+                    allDateTimes.Add(allDateTimes[0].AddMinutes(i*30));
 
                 List<DateTime> bookedDateTimes = db.availability(chosenSurgery, selectedDoctorID, chosenDate);
                 List<DateTime> availableDateTimes = allDateTimes.Except(bookedDateTimes).ToList();
