@@ -18,17 +18,20 @@ namespace WinForms
             }
         }
 
-
         public List<DateTime> availability(string surgeries, int doctor, DateTime date)
         {
             DateTime endDate = date.AddDays(1);
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("FirstDatabase")))
+
+            string queryString =
+                "SELECT DateAndTime " +
+                "FROM dbo.Appointments " +
+                "WHERE Surgery = @surgery AND DoctorID = @doctorSQL " +
+                "AND DateAndTime BETWEEN @dateSQL AND @endDateSQL";
+
+            using (System.Data.SqlClient.SqlConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("FirstDatabase")))
             {
-                return connection.Query<DateTime>($"" +
-                    $"SELECT DateAndTime " +
-                    $"FROM Appointments " +
-                    $"WHERE Surgery = '{ surgeries }' AND DoctorID = { doctor } " +
-                    $"AND DateAndTime BETWEEN '{date:o}' AND '{endDate:o}'").ToList();
+                return connection.Query<DateTime>(queryString,
+                    new { surgery = surgeries, doctorSQL = doctor, dateSQL = date, endDateSQL = endDate }).ToList();
             }
         }
 
