@@ -24,8 +24,11 @@ namespace WinForms
             DateTime endDate = date.AddDays(1);
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("FirstDatabase")))
             {
-                return connection.Query<DateTime>($"SELECT DateAndTime FROM Appointments WHERE Surgery = '{ surgeries }' AND DoctorID = { doctor } " +
-                    $"AND DateAndTime > '{date:o}' AND DateAndTime < '{endDate:o}'").ToList();
+                return connection.Query<DateTime>($"" +
+                    $"SELECT DateAndTime " +
+                    $"FROM Appointments " +
+                    $"WHERE Surgery = '{ surgeries }' AND DoctorID = { doctor } " +
+                    $"AND DateAndTime BETWEEN '{date:o}' AND '{endDate:o}'").ToList();
             }
         }
 
