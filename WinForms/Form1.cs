@@ -34,13 +34,6 @@ namespace WinForms
             valuesChanged();
         }
 
-        private void timeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedItem = timeBox.SelectedItem.ToString();
-            Console.WriteLine(selectedItem);
-            
-        }
-
         private void valuesChanged()
         {
             string chosenSurgery = surgeryDrop.Text;

@@ -134,7 +134,6 @@
             this.timeBox.Name = "timeBox";
             this.timeBox.Size = new System.Drawing.Size(251, 147);
             this.timeBox.TabIndex = 8;
-            this.timeBox.SelectedIndexChanged += new System.EventHandler(this.timeBox_SelectedIndexChanged);
             // 
             // Form1
             // 
